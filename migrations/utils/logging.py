@@ -1,6 +1,7 @@
 import logging
 
 logging.basicConfig(
-    level=logging.WARN,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    level=logging.DEBUG,
+    format='[%(levelname)s][%(asctime)s] %(name)s : %(message)s',
+    datefmt="%Y-%m-%d %H:%M",
 )

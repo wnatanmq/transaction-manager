@@ -14,21 +14,20 @@ def transaction_migration_handler():
         })    
         engine = create_engine(uri_postgresql)
         metadata = MetaData()
-        Table('customer', metadata,
+        table = Table('transaction', metadata,
             Column('id', 
-                Uuid, 
+                String, 
                 primary_key=True
             ),
             Column('amount'   , Float   ),
             Column('timestamp'    , Time),        
             Column('channel' ,  Integer),
-            # considerar o canal como fkey
             Column('sender_agency', Integer     ),
             Column('sender_account', Integer    ),
             Column('receiver_agency', Integer    ),
             Column('receiver_account', Integer   ),
         )
-        metadata.create_all(engine)
+        table.create(bind=engine)
         logger.info("customer migration has finished.")
     except Exception as e:
-        logger.error(e)
+        logger.error({"e" : e})

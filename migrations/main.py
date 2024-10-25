@@ -6,7 +6,8 @@ from dotenv                             import load_dotenv
 def main():
     tmh()
     cmh()
-
+    
 if __name__ == "__main__":
     load_dotenv()
+    print(__name__)
     main()

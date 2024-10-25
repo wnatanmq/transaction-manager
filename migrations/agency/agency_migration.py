@@ -14,7 +14,7 @@ def customer_migration_handler():
         })    
         engine = create_engine(uri_postgresql)
         metadata = MetaData()
-        table = Table('customer', metadata,
+        table = Table('agency', metadata,
             Column('id', 
                 Uuid, 
                 primary_key=True
