@@ -39,6 +39,7 @@ class TransactionRepository(Repository):
             return connection.execute(statement).rowcount
 
     def get_last_transaction_by_customer(self, agency :int, account: int) -> Sequence[Row[Any]]:
+        # TODO: Add a join table to get name for every sender if debit, or receiver if credit        
         with self._engine.connect() as connection:
             statement_sender = self._table.select()\
                 .where(self._table.c.sender_agency==agency)\
