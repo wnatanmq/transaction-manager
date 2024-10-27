@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, Float, Uuid, Time
+from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, Float, Boolean, DateTime
 import os 
 
 from utils.logging import logging
@@ -19,13 +19,15 @@ def transaction_migration_handler():
                 String, 
                 primary_key=True
             ),
-            Column('amount'   , Float   ),
-            Column('timestamp'    , Time),        
-            Column('channel' ,  Integer),
-            Column('sender_agency', Integer     ),
-            Column('sender_account', Integer    ),
-            Column('receiver_agency', Integer    ),
-            Column('receiver_account', Integer   ),
+            Column('amount',            Float),
+            Column('timestamp',         DateTime),        
+            Column('channel',           Integer),
+            Column('sender_agency',     Integer),
+            Column('sender_account',    Integer),
+            Column('receiver_agency',   Integer),
+            Column('receiver_account',  Integer),
+            Column('suspect',           Boolean),
+            
         )
         table.create(bind=engine)
         logger.info("customer migration has finished.")

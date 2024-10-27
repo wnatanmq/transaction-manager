@@ -16,7 +16,7 @@ def customer_migration_handler():
         metadata = MetaData()
         table = Table('customer', metadata,
             Column('id', 
-                Uuid, 
+                String, 
                 primary_key=True
             ),
             Column('name'   , String    ),
