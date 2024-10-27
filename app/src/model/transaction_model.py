@@ -14,4 +14,15 @@ class TransactionModel(BaseModel):
     sender_account:     int         = Field(..., alias="conta_de_origem",           description="Conta de origem",     ge=1 )
     receiver_agency:    int         = Field(..., alias="agencia_de_destino",        description="Agência de destino",  ge=1 )
     receiver_account:   int         = Field(..., alias="conta_de_destino",          description="Conta de destino",    ge=1 )
-    suspect:            int         = Field(default=False,                          description="indicio de suspeita")
+    suspect:            bool         = Field(default=False,                          description="indicio de suspeita")
+
+class TransactionModelNoAlias(BaseModel):
+    id:                 str         = Field(...,            description="ID da transação"           )    
+    amount:             Decimal     = Field(...,            description="Valor da transação"        )    
+    timestamp:          datetime    = Field(...,            description="Data e hora da transação"  )
+    channel:            Channel     = Field(...,            description="Canal da transação"        )
+    sender_agency:      int         = Field(...,            description="Agência de origem",   ge=1 )
+    sender_account:     int         = Field(...,            description="Conta de origem",     ge=1 )
+    receiver_agency:    int         = Field(...,            description="Agência de destino",  ge=1 )
+    receiver_account:   int         = Field(...,            description="Conta de destino",    ge=1 )
+    suspect:            bool         = Field(default=False,  description="indicio de suspeita")

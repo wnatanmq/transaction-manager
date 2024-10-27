@@ -1,7 +1,6 @@
-from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, Uuid
 import os 
-
-from utils.logging import logging
+from sqlalchemy     import create_engine, MetaData, Table, Column, Integer, String, Float
+from utils.logging  import logging
 
 logger = logging.getLogger(__name__)
 
@@ -23,6 +22,7 @@ def customer_migration_handler():
             Column('age'    , String    ),        
             Column('agency' , Integer   ),
             Column('account', Integer   ),
+            Column('balance', Float     ),            
         )
         table.create(bind=engine)        
         logger.info("transaction migration has finished.")

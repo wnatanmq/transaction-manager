@@ -15,4 +15,3 @@ app.include_router(transaction_controller   )
 @app.get("/health")
 def health_check():
     return {"status": "online"}
-
